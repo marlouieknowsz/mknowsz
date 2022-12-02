@@ -1,19 +1,27 @@
 import random
 
 def main():
-    namee = input("What is your name? ")
+
+    namee = input("What is your name? >>> ")
     name = namee.title()
+    print("Welcome to the game >>>", name)
 
-    # Betting program
+    # Betting system
 
-    dep = input("How much are you going to deposit? ")
+    dep = input("How much are you going to deposit? >>> ")
     money = 0 + int(dep)
-    print("Your balance is", money)
+    print("Your current balance is >>>", money,"<<< Pesos")
 
     keepplaying = True
     while keepplaying:
 
-        bet = input("How much would you like to bet? ")
+        bet = input("Enter bet amount >>> ")
+        isbetnotvalid = int(bet) > money or int(bet) < -1
+        while isbetnotvalid:
+            print("Please enter a valid bet.")
+            bet = input("Place fix your bet >>> ")
+            isbetnotvalid = int(bet) > money or int(bet) < -1
+
         betBal = 0 + int(bet)
 
         playerIn = True
@@ -101,10 +109,18 @@ def main():
           print(f"{name}, Has won the game!")
           money = int(money) + int(bet)
 
-        print("Your balance is now", money,"Pesos")
+        # Added an Option to deposit again
+
+        print("Your balance is now >>>", money,"<<< Pesos")
         ask = input("Would you like to play again? [y/n] ")
         if ask == "y" or ask == "Y":
           keepplaying = True
+          depositAgain = input("Would you like to deposit again? [y/n] ")
+          if depositAgain == "y" or depositAgain == "Y":
+            atm = input("Enter deposit amount >>> ")
+            money = int(money) + int(atm)
+            print("Your current balance is: ",money)
+
         else:
           keepplaying = False
           print("Thank you for playing!")

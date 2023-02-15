@@ -1,0 +1,20 @@
+while True:
+
+  text = input("Input: ")
+
+  def isPalindrome(s):
+    return s == s[::-1] 
+
+  s = text
+  palindrome = isPalindrome(s)
+
+  if palindrome:
+    print("Yes")
+  else:
+    print("no")
+      
+  check = input("Do you want to quit or start again? enter Y to restart or another key to end: ")
+  if check.upper() == "Y":
+    continue
+  print("Bye...")
+  break

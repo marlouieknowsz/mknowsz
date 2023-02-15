@@ -1,0 +1,58 @@
+
+
+
+#___________________ _________________________  ___#
+#\_   _____/\_____  \\______   \_   _____/\   \/  /#
+# |    __)   /   |   \|       _/|    __)_  \     / #
+# |     \   /    |    \    |   \|        \ /     \ #
+# \___  /   \_______  /____|_  /_______  //___/\  \#
+#     \/            \/       \/        \/       \_/#
+
+
+
+import requests
+
+#THE AMOUNT OF PHP TO BE CONVERTED
+print(">>> Welcome to Foreign Exchange <<<")
+amount = float(input("Enter the amount in Philippine Peso (PHP) >>> "))
+
+#CURRENCIES
+PHP = "PHP"
+USD = "USD"
+CAD = "CAD"
+SGD = "SGD"
+EUR = "EUR"
+
+#BASTA
+U = "US Dollar"
+C = "Canadian Dollar"
+S = "Singaporean Dollar"
+E = "Euro"
+
+
+############################################################################
+
+
+#PHP TO US DOLLAR / EXCHANGE API
+response = requests.get(
+  f"https://api.frankfurter.app/latest?amount={amount}&from={PHP}&to={USD}")
+print(
+  f"{amount} {PHP} is {response.json()['rates'][USD]} {U}")
+
+#PHP TO CANADIAN DOLLAR
+response = requests.get(
+  f"https://api.frankfurter.app/latest?amount={amount}&from={PHP}&to={CAD}")
+print(
+  f"{amount} {PHP} is {response.json()['rates'][CAD]} {C}")
+
+#PHP TO SINGAPORIAN DOLLAR
+response = requests.get(
+  f"https://api.frankfurter.app/latest?amount={amount}&from={PHP}&to={SGD}")
+print(
+  f"{amount} {PHP} is {response.json()['rates'][SGD]} {S}")
+
+#PHP TO EUROS
+response = requests.get(
+  f"https://api.frankfurter.app/latest?amount={amount}&from={PHP}&to={EUR}")
+print(
+  f"{amount} {PHP} is {response.json()['rates'][EUR]} {E}")
